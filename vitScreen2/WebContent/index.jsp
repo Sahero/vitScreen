@@ -1,0 +1,1 @@
+<% response.sendRedirect("screen1.jsf" ); %>

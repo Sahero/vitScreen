@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+<title>Operations status dashboard </title>
+ 
+<style> body.siteshow { margin:0; padding:0; background-color:#FFFFFF; } </style>
+<style>
+img
+{
+	position:absolute;
+	left:4px;
+	top:0px;
+	z-index:-1;
+}
+</style>
+<script type="text/javascript">
+var current_idx = 0;
+var slides = new Array();
+var cslides = new Array();
+var menuwin;
+var show_timer;
+var menu_timer;
+var menu;
+var content;
+var loaded = true;
+ 
+//      1. Duration in seconds.
+//      2. Title to be used in menu.
+//      3. Source URL. Can be full URI or a relative URL.
+
+
+slides[1] = new Array(10, "Server Current", "screen1.jsf");
+slides[2] = new Array(10, "Server Trend", "screen2.jsf");
+slides[3] = new Array(10, "Upcoming clients", "upcomingclients.jsf");
+slides[4] = new Array(10, "Layout Change", "layoutChange.jsf");
+slides[5] = new Array(10, "Nepal Visitor", "announcementnv.jsf");
+slides[6] = new Array(10, "New Hire", "announcementnh.jsf");
+
+cslides[1] = new Array(10); 
+ 
+
+function Navigate(slide_idx)
+{
+    clearTimeout(show_timer);
+    if (current_idx == 0) {
+        if (!slide_idx) { slide_idx = 1; }
+        current_idx = slide_idx;
+        content.src = slides[current_idx][2];
+        show_timer = setTimeout("Navigate()", slides[current_idx][0]*1000);
+        return;
+    }
+
+    if (slide_idx) {
+        current_idx = slide_idx;
+        content.src = slides[current_idx][2];
+ 
+        return;
+    }
+
+    loaded = false;
+    current_idx++;
+    if ( current_idx == slides.length) { current_idx = 1; }
+ 
+    show_timer = setTimeout("Navigate()", slides[current_idx][0]*1000);
+    return;   
+}
+ 
+ 
+ 
+ 
+function LoadTrigger()
+{
+	
+	var i =0;
+	var urls = new Array();
+	$(".urls").each(function(){
+		urls[i] = $(this).val();
+		cslides[i+1] = new Array($(this).val());
+ 		i++;
+ 		document.write(cslides[i+1][0]);
+ 		document.write(urls[i]);
+	}
+	
+
+	
+	);
+
+    //self.resizeTo(1366,768);
+ 	self.resizeTo(window.innerWidth, window.innerHeight);
+    content = document.getElementById('content');
+    Navigate();
+
+}
+
+window.onload = LoadTrigger;
+
+				
+
+</script>
+
+</h:head>
+<body class="siteshow" style="overflow=true">
+
+<div class="img" > <img  src="images/logo.png" align="left"  /> </div>
+
+	<h:form id="urlForm" style="display:none" >
+		<p:dataTable var="url" value="#{customURLs.url}" > 
+		<p:column  >  
+            <p:inputText styleClass="urls"   value="#{url.duration} , '#{url.title}', ' #{url.link}'"/>
+        </p:column>   	      
+	    </p:dataTable>  
+
+	</h:form>
+
+
+
+ 
+</body>
+</html>

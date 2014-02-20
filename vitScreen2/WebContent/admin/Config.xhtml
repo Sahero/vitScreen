@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Operation Status Screen - Config</title>
+	<link rel="stylesheet" href="../css/normalize.css" type="text/css" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<link rel="shortcut icon" href="../images/favicon.ico" />
+
+</h:head>
+<h:body>
+<ui:include src="../template/sessionTimeOut.xhtml" />
+	<table style="width: 100%">
+		<tr>
+			<td colspan="3" style="padding-right: 30px" align="right">
+			<ui:include	src="header.xhtml" /></td>
+		</tr>
+		<tr>
+			<td colspan="3"
+				style="background: #F37B20; font-size: 1px; height: 2px;"
+				class="orange"></td>
+		</tr>
+		<tr>
+			<td>
+			
+			<h:form id="form">			
+					<p:growl id="msg"/>
+					<p:panel header="Display Options">
+						<table> 
+  						<tr>
+						        <td>  
+						        	<p:dataTable var="url" value="#{screenURLs.url}" > 
+										<p:column styleClass="screenCol" headerText="ID">  
+					            			<p:outputLabel value="#{url.id}"/>
+					        			</p:column>  
+					        			<p:column styleClass="screenCol" headerText="TITLE">  
+					            			<p:outputLabel value="#{url.title}"/>
+					        			</p:column>  
+										<p:column styleClass="screenCol" headerText="URL">  
+					            			<p:outputLabel value="#{url.link}"/>
+					        			</p:column>   
+					        			<p:column styleClass="screenCol" headerText="VISIBLE">  
+					            			<p:selectBooleanCheckbox  value="#{url.visible}">  
+									            <p:ajax update=":form:msg" listener="#{url.updateScreen}"/>  
+									        </p:selectBooleanCheckbox>    
+					        			</p:column>	      
+					   				</p:dataTable> 
+								</td>
+					  </tr>
+					    </table>  
+					</p:panel>
+				</h:form></td>
+		</tr>
+	</table>
+</h:body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/jqPlotExtender.js"></script>
+<script type="text/javascript" src="js/jqplot.canvasOverlay.js"></script>
+<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
+<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+			var dynamicHeight =window.innerHeight - 0.03 * window.innerHeight;
+			//var dynamicHeight =window.innerHeight;
+			jQuery("#prodRacBar").css("height",dynamicHeight +'px'); 
+		});		
+		
+		function jqPlotExtBar() {
+			//this = chart widget instance
+			//this.cfg = options
+			this.cfg.grid ={
+					borderColor: '#CACACA',
+					shadow: true, 
+					background: '#EBEBEB'
+			};
+  
+		  this.cfg.axesDefaults = { 
+			       //useSeriesColor: true, 
+			  	min:0,
+			        	max:100,
+			       tickInterval: 20, 
+			       tickOptions: { 
+			           formatString: '%d%',
+			           showGridline:false
+			           
+			       },
+		 // xaxis:{drawMajorGridelines: true ! important}
+			       
+		   };  
+	 
+	 /*
+		  this.cfg.axesDefaults: {
+			    rendererOptions: {
+			        baselineWidth: 1.5,
+			        drawBaseline: false
+			    }
+			},
+			grid: {
+			    drawBorder: false,
+			    borderWidth:0, 
+			    shadow:false
+			},
+			xaxis: { 
+			        drawMajorGridlines: false
+			};
+ 
+
+		   */
+			this.cfg.canvasOverlay= {
+				      show: true,
+				      objects: [
+				         {dashedHorizontalLine: {
+					            label: 'High',
+					            showLabel: true,
+					            y: 90,				            
+					            lineWidth: 1,
+					            color: 'red',
+					            shadow: false
+					         },
+					         dashedHorizontalLine2: {
+						            label: 'Low',
+						            showLabel: true,
+						            y: 80,					            
+						            lineWidth: 1,
+						            color: 'green',
+						            shadow: false
+						         },
+				
+					         dashedHorizontalLine3: {
+						            label: 'Min',
+						            showLabel: true,
+						            y: 60,					            
+						            lineWidth: 1,
+						            color: 'orange',
+						            shadow: false
+						         
+						         }
+						 
+				         } 
+				      ]   
+			};
+			this.cfg.seriesDefaults = {
+		            
+		            renderer:$.jqplot.BarRenderer,
+		            rendererOptions: {
+		                // Put a 30 pixel margin between bars.
+		                barMargin:"60",
+		                // Highlight bars when mouse button pressed.
+		                // Disables default highlighting on mouse over.
+		                highlightMouseDown: true   
+		            },
+		            pointLabels: {show: true,formatString: '%d%'}	            
+		            
+		        };
+			this.cfg.stackSeries= true;
+			this.cfg.legend = {
+					renderer: $.jqplot.EnhancedLegendRenderer,
+			        show: true,
+			        location: 's',
+			        placement: 'outsideGrid',
+			        rendererOptions: {
+                        numberColumns: 2,
+                        numberRows : 1
+                    }
+			}; 
+		 
+		 
+		 
+			
+		}
+</script>
+
+</h:head>
+<h:body>
+ 
+	<p:barChart id="prodRacBar" seriesColors="4BB2C5,F48533" max="100" min="0" value="#{spaceUtilizationTrend.prodRAC}" title="Production RAC - Space Utilization Trend" 
+	stacked="true" showDatatip="false" extender="jqPlotExtBar" barPadding="8"    />
+ 
+<h:form> <p:poll interval="30" listener="#{demoSlideShowBean.screen3}"  > </p:poll></h:form>
+</h:body> 
+</html>

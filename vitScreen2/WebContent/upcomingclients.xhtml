@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+<meta http-equiv="refresh" content="900" />
+</h:head>
+<h:body>
+	<h:form id="clientStatus">
+		<p:dataTable  var="ucd"	value="#{upcomingClientDeliverable.clientDeliverablesList}" rowStyleClass="#{ucd.remainingDays lt 0 ? 'noRemDays' : null } #{ucd.remainingDays ge 0 ? 'yesRemDays' : null } #{ucd.remainingDays == 0 ? 'zeroRemDays' : null}"  
+    
+		>
+			 <f:facet name="header">  
+            	Upcoming Client Deliverables  
+        	</f:facet> 
+      	
+ 
+ 			<p:column headerText="ID">
+				<p:outputLabel style="font-weight:bold;" value="#{ucd.appID}" />
+			</p:column>
+<!-- 			<p:column headerText="APP NAME"> -->
+<!-- 				<p:outputLabel value="#{ucd.appName}" /> -->
+<!-- 			</p:column> -->
+			<p:column headerText="Target Date">
+				<p:outputLabel value="#{ucd.targetDate}" />
+			</p:column>
+			<p:column headerText="Revenue Month">
+				<p:outputLabel value="#{ucd.revenueMonth}" />
+			</p:column>
+			<p:column headerText="Current Phase">
+				<p:outputLabel value="#{ucd.currentPhase}" />
+			</p:column>
+			<p:column headerText="Remaining Days">
+				<p:outputLabel value="#{ucd.remainingDays}" />
+			</p:column>
+			<p:column headerText="Waltham PM">
+				<p:outputLabel value="#{ucd.walthamPM}" />
+			</p:column>
+			<p:column headerText="Nepal PM">
+				<p:outputLabel value="#{ucd.nepalPM}" />
+			</p:column>
+			<p:column headerText="Account Manager">
+				<p:outputLabel value="#{ucd.accountManager}" />
+			</p:column>
+				<p:column headerText="Product">
+				<p:outputLabel value="#{ucd.product}" />
+			</p:column>
+		</p:dataTable>
+		 
+  <p:poll interval="30" listener="#{slideShowBean.screen4}"  > </p:poll> 
+	</h:form>   	
+</h:body>
+</html>

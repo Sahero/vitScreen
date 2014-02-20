@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta http-equiv="refresh" content="900" />
+	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="js/jqPlotExtender.js"></script>
+	<script type="text/javascript" src="js/jqplot.canvasOverlay.js"></script>
+	<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+</h:head>
+<h:body>
+ 
+<p/><br/> <p/>
+	<p:panelGrid id="panelID" columns="1" style="width:100%" >
+	<p:panel style="text-align:center;font-family: Helvetica; font-size:18pt ;font-weight:bold; width: 100%">
+	 <h:outputText value="Welcome"></h:outputText> 
+	</p:panel>
+	 </p:panelGrid>
+<p></p>
+
+ 
+ 
+ <br/><br/>
+ 
+ <table border="0">
+ <tr>
+ <td style="width:40%"></td>
+ <td>
+
+<h:outputText value="Welcome" style="font-size: 14pt; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"></h:outputText>
+ <br></br>
+ <h:outputText value="Mark Moody" style="font-size: 16pt; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"></h:outputText>
+
+<br/>
+<h:outputText value="to Verisk Health Data Operations team." style="font-size: 14pt; font-family: Verdana, Arial, Sans-Serif"></h:outputText>
+ <br></br><br></br><br></br>
+ </td>
+ </tr>
+ <tr>
+ 
+ </tr>
+ <tr>
+ <td style="width:40%"></td>
+ <td>
+ 
+<h:outputText value="Welcome" style="font-size: 14pt; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"></h:outputText>
+ <br></br>
+ <h:outputText value="Megha Bhattarai" style="font-size: 14pt; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"></h:outputText>
+<br/>
+<h:outputText value="to Verisk Health Data Operations team." style="font-size: 14pt; font-family: Verdana, Arial, Sans-Serif"></h:outputText>
+
+ 
+ </td>
+ 
+ </tr>
+ </table>
+        
+        <h:form> <p:poll interval="30" listener="#{slideShowBean.screen1}"  > </p:poll></h:form>
+</h:body>
+</html>

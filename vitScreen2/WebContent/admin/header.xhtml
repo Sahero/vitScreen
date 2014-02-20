@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+		<table>
+			<tr>
+				<td class="normal" style="font-size: 11.5px;"><h:outputText
+						value="#{loginbean.username}" /> | <h:commandButton
+						styleClass="buttons" action="#{loginbean.logout}" value="Logout" />
+				</td>
+
+			</tr>
+			<tr>
+				<td align="left" valign="top"><img src="../images/logo.png"
+					border="0" /></td>
+			</tr>
+
+		</table>
+	</h:form>
+</ui:composition>

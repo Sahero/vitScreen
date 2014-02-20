@@ -1,0 +1,91 @@
+/*-----Common-----*/
+
+table.jqplot-table-legend, table.jqplot-cursor-legend {font-size: 18px;}
+
+div.jqplot-table-legend-swatch {
+    border-style: solid;
+    border-width: 5px 6px;
+    height: 16px;
+    width: 16px;
+}
+
+.jqplot-title {font-size:36px; color:black;}
+/*--End of Common style--*/
+
+/* Screen 1 - Space Utilization Current Status*/
+.currentStatusBar div.jqplot-table-legend-swatch {
+    border-style: solid;
+    border-width: 5px 6px;
+    height: 8px;
+    width: 8px;
+}
+.ui-panelgrid td {
+ border:none;
+}
+
+#panelID .ui-widget {border:1px solid gray}
+.ui-widget-content {background:none;border:none}
+.ui-panelgrid-header .ui-widget-header {background:none; border:none;font-size:36px; color:black;}
+.ui-panelgrid-footer .ui-widget-header {background:none; border:none;font-size:15px; color:black; text-align: right}
+.currentStatusBar table.jqplot-table-legend, tabfont-size:36px; color:black;le.jqplot-cursor-legend {font-size: 15px;border:none;}
+.currentStatusBar .jqplot-data-label{color:white;font-size:30px} 
+.currentStatusBar .jqplot-title {font-size:20px; color:black;}
+.currentStatusBar {width:93%}
+.currentStatusBar .jqplot-point-label {
+color:black;
+}
+
+/* End of Screen 1 style*/
+
+/* Screen 2 - Production RAC - Space Utilization Trend*/
+
+#prodRacBar .jqplot-point-label {
+color:black;
+}
+
+#prodRacBar {width:95%}
+
+/* End of Screen 2 style*/
+
+/* Screen 9 - Upcoming Client Deliverable styles */
+
+#clientStatus .ui-widget-content
+{
+	
+	border:1px solid black; 
+/* 	color: #000000; */
+    font-size: 14px;
+   
+    
+}
+
+#clientStatus .ui-widget-header {
+	color:black;
+	font-size:36px;
+	text-shadow: none;
+	background: none;
+	border:none;
+	font-weight: normal;
+	font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+.noRemDays{
+	background:#EB5E66	;
+	color:black;
+}
+
+.yesRemDays{
+	background:#C4C4C4;
+}
+
+.zeroRemDays{
+	background:#FFE303;
+}
+
+#clientStatus .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: none repeat scroll 0 0 #0198E1;
+    border: 1px solid black;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+/* End of Upcoming Client Deliverables style */

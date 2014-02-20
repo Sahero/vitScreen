@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta http-equiv="refresh" content="900" />
+	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="js/jqPlotExtender.js"></script>
+	<script type="text/javascript" src="js/jqplot.canvasOverlay.js"></script>
+	<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+	
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			var dynamicHeight = window.innerHeight - 0.03 * window.innerHeight;
+			//var dynamicHeight = window.innerHeight;
+			jQuery("#panelID").css("height", dynamicHeight + 'px');
+		});
+		
+
+	</script>
+</h:head>
+
+<h:body>                                    
+<h:form> <p:poll interval="30" listener="#{demoSlideShowBean.screen2}"  > </p:poll></h:form>
+	<p:panelGrid id="panelID" columns="2" style="width:98%;hight:98%">
+		<f:facet name="header">Space Utilization Current* Status</f:facet>
+		<p:panel>
+			<p:barChart styleClass="currentStatusBar" id="prodRacBar"
+				value="#{spaceUtilizationCurrentStatus.prodRAC}"
+				title="Production RAC" stacked="true"
+				showDatatip="false" extender="jqPlotExtBar"
+				barPadding="8" seriesColors="4BB2C5,F48533" />
+		</p:panel>
+		<p:panel>
+			<p:barChart styleClass="currentStatusBar" id="drRacBar"
+				value="#{spaceUtilizationCurrentStatus.drRAC}"
+				title="DR RAC" stacked="true"
+				showDatatip="false" extender="jqPlotExtBar" barPadding="8" seriesColors="4BB2C5,F48533" />
+		</p:panel>
+ 		<p:panel>
+			<p:barChart styleClass="currentStatusBar" id="procServerBar"
+				value="#{spaceUtilizationCurrentStatus.procServer}"
+				title="Processing Server (Cumulative)" stacked="true"
+				showDatatip="false" extender="jqPlotExtBar"
+				barPadding="8" seriesColors="4BB2C5,F48533" />
+		</p:panel>
+		<p:panel>
+			<p:barChart styleClass="currentStatusBar" id="scrubServerBar"
+				value="#{spaceUtilizationCurrentStatus.scrubServer}"
+				title="Scrub Servers (Cumulative)" stacked="true"
+				showDatatip="false" extender="jqPlotExtBar" barPadding="8" seriesColors="4BB2C5,F48533" />
+		</p:panel>
+	</p:panelGrid>
+
+</h:body>
+</html>

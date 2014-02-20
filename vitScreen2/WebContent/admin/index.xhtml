@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>Operation Status Screen - Admin Login</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico" />
+	<link rel="stylesheet" href="../css/normalize.css"  type="text/css" />
+	<link rel="stylesheet" href="../css/style.css"  type="text/css" />
+	
+	
+</h:head>
+<h:body>
+	<div class="loginform cf">
+		<h:form>
+		
+			<script type="text/javascript">
+			  var redirectPage = "#{request.contextPath}/admin/Config.jsf";
+			  var username= "#{loginbean.username}";
+			  
+		 	  if(username != ""){
+		 		 window.location.href = redirectPage;
+		 	  }
+			</script>
+			<p:panel >
+			<table>
+				<tr>
+				<td align="center"><img src="../images/logo.png"/></td>
+				</tr>
+				<tr>
+							<td height="10"></td>	
+				</tr>
+				<tr>
+				<td>
+					<table>
+						<tr>
+							<td> 
+								<h:panelGroup rendered="#{loginbean.validationComplete and (!loginbean.usernameValid or !loginbean.passwordValid)}">
+									
+									<h:outputText value="Username is missing" rendered="#{!loginbean.usernameValid}" style="color:red" />
+									<br/>
+									<h:outputText value="Password is missing" rendered="#{!loginbean.passwordValid}" style="color:red" />
+								</h:panelGroup>
+							</td>
+						</tr> 
+						<tr>
+							<td height="10"></td>	
+						</tr>
+						<tr> 
+							<td>
+								<h:outputText value="Username: " />
+								<h:inputText value="#{loginbean.username}"/>
+							</td>
+						</tr>
+						<tr>
+							<td height="10"></td>	
+						</tr>
+						<tr>
+							<td>
+								<h:outputText value="Password: " />
+								<h:inputSecret value="#{loginbean.password}"/>
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h:commandButton value="Login" action="#{loginbean.checkValidity}"/>
+							</td>
+						</tr>
+					</table>
+				</td>
+				</tr>
+			</table>
+			</p:panel>
+		</h:form>
+	</div>
+</h:body>
+</html>

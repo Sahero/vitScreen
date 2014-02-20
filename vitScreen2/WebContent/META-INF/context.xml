@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/vitScreen" >
+<Resource name="jdbc/datadashboard" 
+		  auth="Container"
+          type="javax.sql.DataSource"  
+		  driverClassName="oracle.jdbc.driver.OracleDriver"
+          url="jdbc:oracle:thin:@10.48.6.193:1521:d2he"
+          username="datadashboard" 
+		  password="oracle" 
+		  maxActive="10" 
+		  maxIdle="4"
+		  initialSize="1"
+		  removeAbandonedTimeout="30"
+          removeAbandoned="true"
+          logAbandoned="false"
+          maxWait="-1"
+/>
+
+<Resource name="jdbc/cloud12" 
+		  auth="Container"
+          type="javax.sql.DataSource"  
+		  driverClassName="oracle.jdbc.driver.OracleDriver"
+          url="jdbc:oracle:thin:@10.48.6.225:1521:cloud12"
+          username="dashboard" 
+		  password="oracle" 
+		  maxActive="10" 
+		  maxIdle="4"
+		  initialSize="1"
+		  removeAbandonedTimeout="30"
+          removeAbandoned="true"
+          logAbandoned="false"
+          maxWait="-1"
+/>
+</Context>

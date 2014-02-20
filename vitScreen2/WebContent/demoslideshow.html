@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+<html>
+<head>
+<title>Operations status dashboard </title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1250">
+
+<style type="text/css">
+<style>
+ 
+body.siteshow { margin:0; padding:0; background-color:#FFFFFF; }
+</style>
+
+<script type="text/javascript">
+var current_idx = 0;
+var slides = new Array();
+var menuwin;
+var show_timer;
+var menu_timer;
+var menu;
+var content;
+var loaded = true;
+ 
+//      1. Duration in seconds.
+//      2. Title to be used in menu.
+//      3. Source URL. Can be full URI or a relative URL.
+
+slides[1] = new Array(10, "Server Current", "demoscreen1.jsf");
+slides[2] = new Array(10, "Server Trend", "demoscreen2.jsf");
+slides[3] = new Array(10, "Upcoming clients", "demoupcomingclients.jsf");
+slides[4] = new Array(10, "Layout Change", "demolayoutChange.jsf");
+
+
+function Navigate(slide_idx)
+{
+    clearTimeout(show_timer);
+    if (current_idx == 0) {
+        if (!slide_idx) { slide_idx = 1; }
+        current_idx = slide_idx;
+        content.src = slides[current_idx][2];
+        show_timer = setTimeout("Navigate()", slides[current_idx][0]*1000);
+        return;
+    }
+
+    if (slide_idx) {
+        current_idx = slide_idx;
+        content.src = slides[current_idx][2];
+ 
+        return;
+    }
+
+    loaded = false;
+    current_idx++;
+    if ( current_idx == slides.length) { current_idx = 1; }
+ 
+    show_timer = setTimeout("Navigate()", slides[current_idx][0]*1000);
+    return;   
+}
+ 
+ 
+ 
+ 
+function LoadTrigger()
+{
+    //self.resizeTo(1366,768);
+ 	self.resizeTo(window.innerWidth, window.innerHeight)
+    content = document.getElementById('content');
+    Navigate();
+
+}
+
+window.onload = LoadTrigger;
+
+</script>
+
+</head>
+<body class="siteshow" style="overflow=true">
+<style>
+img
+{
+position:absolute;
+left:4px;
+top:0px;
+z-index:-1;
+}
+</style>
+<div class="img" >
+<img alt="" src="images/logo.png" align="left"  > 
+</div>
+<iframe  id="content" name="content" style="width:100%; height:100%;" frameborder="0" scrolling="no" src="" ></iframe>
+</body>
+</html>
